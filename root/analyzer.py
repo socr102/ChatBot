@@ -244,7 +244,7 @@ def Lifeline_state(response,id):
         currentchat.save()
         plan = ["You quality for"]
         for i in range(0,len(response['LifelinePlans'])):
-            mid=(str(response['LifelinePlans'][i]["Id"]))
+            mid=(str(response['LifelinePlans'][i]["Name"]))
             plan.append(mid)
         
         return [plan,"LifelinePlans","normal"]

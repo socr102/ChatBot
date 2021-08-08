@@ -1,7 +1,6 @@
-from root.analyzer import CGMChecks, EDIT_Info, EDIT_Info_item, FCRATEXT, GET_FLOWCHAT_STATE, SAVE_Info, SET_ConfirmInfo, SET_TribalResident, STARTFLOWCHAT4, setLanguageEs , setLanguageJv ,setLanguageCK ,getLifelineform
-import requests
-import time,os,uuid,json,re,sched, timeit,django  
-from root.CSGM_APIs import CheckAvailability_API, UserConfiguration_API, StateConfiguration_API, StartOrder_API, Lifeline_API, CheckNVApplicationStatus_API,CheckNladEbbApplicationStatus_API, SubmitServiceType_API, SubmitServiceStatus_API
+from root.analyzer import *
+import os,django  
+from root.CSGM_APIs import *
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'PROJECT.settings')
@@ -156,10 +155,13 @@ def generateReply(chatid,incoming_message):
             currentchat.save()
             return ["Please upload your proof of income?","normal"]
         elif currentchat.init_message == "moreIncome":
-
-            currentchat.init_message = "moreIncomeCheck"
-            currentchat.save()
-            return ["Do you have more income information to provide?","normal_yes_no"]
+            if  str(incoming_message).isnumeric():
+                currentchat.Income = int(incoming_message)
+                currentchat.init_message = "moreIncomeCheck"
+                currentchat.save()
+                return ["Do you have more income information to provide?","normal_yes_no"]
+            else:
+                return ["Please Input the correct Income","normal"]    
         elif currentchat.init_message == "moreIncomeCheck":
             return moreIncome(incoming_message,chatid)
         elif currentchat.init_message == "BestWay":
@@ -239,7 +241,7 @@ def generateReply(chatid,incoming_message):
         elif currentchat.init_message == "EndSuccess" :
             currentchat.init_message = "EndChatBefore"
             currentchat.save()
-            return ["Congratulations!🥳Your application is complete!Thank you for choosing Access Wireless.Your order number is: " + str(currentchat.OrderNumber) + " We will contact you when your applications has been finalized.","normal_autoPass"] 
+            return ["Congratulations! Your application is complete!Thank you for choosing Access Wireless.Your order number is: " + str(currentchat.OrderNumber) + " We will contact you when your applications has been finalized.","normal_autoPass"] 
         elif currentchat.init_message == "EndChatBefore" :
             currentchat.init_message = "EndChat"
             currentchat.save()

@@ -61,6 +61,7 @@ class ChatTracker(models.Model):
     other_adult = models.CharField(max_length=20,default="",blank=True)
     share_liveing_expesses = models.CharField(max_length=20,default="",blank=True)
     #SubmitOrder
+    Income = models.IntegerField(default=0)
     PhoneNumber = models.CharField(max_length=10,default="",blank=True)
     PinCode = models.CharField(max_length=4,default="",blank=True)
     BestWayToReachYou =  models.CharField(max_length=10,default="",blank=True)
