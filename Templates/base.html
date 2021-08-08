@@ -1,0 +1,173 @@
+{% load static  %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/materialize-stepper@3.1.0/dist/css/mstepper.min.css">
+  <script src="https://unpkg.com/materialize-stepper@3.1.0/dist/js/mstepper.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/cowsay@1.4.0/build/cowsay.umd.min.js"></script>
+<link rel="stylesheet" href="{{ STATIC_URL }}/Static/css/materialize.css">  
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">  -->
+    <script src="{{ STATIC_URL }}/Static/javascript/materialize.js"></script> 
+    <script src="{{ STATIC_URL }}/Static/javascript/jquery.js"></script>
+{% if page_title %}
+  <title>{{page_title}}</title>  
+{% else %}
+  <title>CSGM Form</title>
+  {% endif %}
+  
+
+<link rel="shortcut icon" href="{{ STATIC_URL }}/Static/images/favicon.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+  
+
+
+  <style>
+
+ 
+
+
+     /* label focus color */
+   .input-field input[type=text]:focus + label {
+    color: #424242 !important; 
+}
+/* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid #424242 !important;
+    box-shadow: 0 1px 0 0 #424242 !important;
+  }
+
+  ul.dropdown-content li span {
+    color: #424242 !important;
+}
+ 
+.input-field input[type=text].valid {
+  border-bottom: 1px solid #424242 !important;
+  box-shadow: 0 1px 0 0 #424242 !important;
+}
+.datepicker-date-display{
+  background-color: #424242 !important;
+}
+ 
+
+.datepicker-date-display {
+    background-color: #424242 !important
+}
+
+.datepicker-day-button:focus {
+    color: white !important;
+    background-color: #424242 !important
+}
+
+.datepicker-done,
+.datepicker-cancel,
+.select-dropdown li>span,
+.is-today {
+    color: #424242 !important
+}
+
+td.is-selected,
+.month-prev:active,
+.month-prev:focus,
+.month-next:active,
+.month-next:focus {
+    background-color: #424242 !important
+}
+
+td.is-selected.is-today {
+    color: white !important
+}
+
+
+
+.confirmation-btns > button{
+  color: #424242 !important;
+}
+
+ 
+
+input.toggleaddress:checked + label:before {
+  top: -4px;
+  left: -3px;
+  width: 12px;
+  height: 22px;
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+  border-right: 2px solid #424242 !important; /* You need to change the colour here */
+  border-bottom: 2px solid #424242 !important; /* And here */
+  -webkit-transform: rotate(40deg);
+  -moz-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  -o-transform: rotate(40deg);
+  transform: rotate(40deg); 
+  -webkit-transform-origin: 100% 100%;
+  -moz-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  -o-transform-origin: 100% 100%;
+  transform-origin: 100% 100%; }
+
+  .form-inline .form-group{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+    
+    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+</head>
+<body id="body">      
+{% include 'partials/root/navbar.html' %}
+ 
+{% block 'mainbody' %}
+
+ 
+{% endblock 'mainbody' %}
+          
+          
+
+  <!-- Dropdown Trigger -->
+ 
+           
+<script src="{{ STATIC_URL }}/Static/javascript/jquery.js"></script>  
+<script src="{{ STATIC_URL }}/Static/javascript/responsive.js"></script>   
+{% block 'js' %}
+{% endblock 'js' %}
+<script>
+ 
+ 
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {
+      FormSelect:true
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.browser-default');
+    var instances = M.FormSelect.init(elems, {
+      FormSelect:true
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, {
+      Datepicker:true
+    });
+  }); 
+
+</script>
+   </body>
+ </html>

@@ -1,0 +1,339 @@
+{% extends 'base.html' %}v
+{% block 'mainbody' %}
+
+
+
+
+<br><br><br>
+<div class="container">
+    <div class="container">
+
+
+        <h3>Personal Information</h3>
+        <hr>
+
+        <form action="/submit_info/{{id}}" method="post" id="form"> {% csrf_token %}
+
+            <div id="step1">
+                <p>Please select ONE of the government programs you are enrolled in below.</p>
+                <h5><b>Georgia Programs*</b></h5>
+                <center>
+                    <p>135% of Federal Poverty Guidelines</p>
+                </center>
+                <div style="width:100%;font-size:30px" class='btn grey darken-3 program'>135p</div>
+                <center>
+                    <p>Georgia Medicated</p>
+                </center>
+                <div style="width:100%;font-size:30px" class='btn grey darken-3 program'>GAMCAID</div>
+                <center>
+                    <p>FPHA or Section 8</p>
+                </center>
+                <div style="width:100%;font-size:30px" class='btn grey darken-3 program'>sec8</div>
+                <center>
+                    <p>Food Assistance</p>
+                </center>
+                <div style="width:100%;font-size:30px" class='btn grey darken-3 program'>GASNAP</div>
+                <center>
+                    <p>Supplemental Security Income</p>
+                </center>
+                <div style="width:100%;font-size:30px" class='btn grey darken-3 program'>SSI</div>
+                <center>
+                    <p>Veterans or Survivors Persion</p>
+                </center>
+                <div style="width:100%;font-size:30px" class='btn grey darken-3 program'>VSDP</div>
+                <br><br>
+                <input type="text" name="program_value" id="program_value" style="height: 1px;width:1px">
+                <div>
+                    <div id="step1_next_btn" style="width: 150px;" class="btn grey darken-3 right">Next</div>
+                </div>
+                <br><br><br><br><br><br>
+            </div>
+
+            <div id="step2" style="display:none">
+                <div class="input-field ">
+                    <input id="first_name" name="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field ">
+                    <input id="middle_name" name="middle_name" type="text" class="validate">
+                    <label for="middle_name">Middle Name</label>
+                </div>
+                <div class="input-field ">
+                    <input id="last_name" name="last_name" type="text" class="validate">
+                    <label for="last_name">Last Name</label>
+                </div>
+                <div class="input-field ">
+                    <input id="second_last_name" name="second_last_name" type="text" class="validate">
+                    <label for="second_last_name">Second Last Name</label>
+                </div>
+                <br><br>
+                <div class="input-field">
+                    <select id="suffix" name="suffix">
+                        <option value="" disabled selected>No Suffix</option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                        <option value="IV">IV</option>
+                    </select>
+                    <label>Suffix</label>
+                </div>
+                <br>
+                <div class="input-field ">
+                    <div class="form-inline">
+                        <div style="display: inline-flex;" class="form-group">
+                            <input type="text" id="month" name= "month" class="form-control validate"  size="2" maxlength="2" placeholder="MM-"/>   
+                        </div>
+                        <div style="display: inline-flex;"class="form-group">
+                            <input type="text" id="day"name="day"  class="form-control validate"  size="2" maxlength="2" placeholder="DD-"/>
+                        </div>
+                        <div style="display: inline-flex;" class="form-group">
+                            <input type="text" id="year"  name="year" class="form-control validate" size="4" maxlength="4" placeholder="YYYY"/>
+                        </div>
+                    </div>
+                    <!-- <input id="date" name="date" type="text" class="datepicker" min="1950-01-01"max="2005-01-01"> -->
+                    <!-- <label for="date">Select Date</label> -->
+                </div>
+                <div class="input-field ">
+                    <input id="last_four_social" name="last_four_social" size="4" maxlength="4"type="text" class="validate">
+                    <label for="last_four_social">Last Four of Social</label>
+                </div>
+                <div>
+                    <div id="step2_previous_btn" style="width: 150px;" class="btn grey darken-3 left">Previous</div>
+                    <div id="step2_next_btn" style="width: 150px;" class="btn grey darken-3 right">Next</div>
+                </div>
+                <br><br><br><br><br><br>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="step3" style="display:none">
+
+                <div class="input-field ">
+                    <input id="residence_address" name="residence_address" type="text" class="validate">
+                    <label for="residence_address">Residence Address</label>
+                </div>
+                <div class="input-field ">
+                    <input id="apt_unit1" name="apt_unit1" type="text" class="validate">
+                    <label for="apt_unit1">Apt, unit or lot #</label>
+                </div>
+
+                <label>Is your address temporary or permanent?</label>
+                <select name="address_nature" id="address_nature">
+                    <option value="permanent" selected>Permanent</option>
+                    <option value="temporary">Temporary</option>
+                </select>
+
+
+                <p class="checkbox_contaiiner">
+                    <label>
+                        <input class="grey darken-3 " id="toggleaddress" name="toggleaddress" type="checkbox" />
+                        <span>I have a different shipping address.</span>
+                    </label>
+                </p>
+
+
+
+                <div id="toggleaddressdiv" style="display:none">
+                    <div class="input-field ">
+                        <input id="shipping_address" name="shipping_address" type="text" class="validate">
+                        <label for="shipping_address">Shipping Address </label>
+                    </div>
+                    <div class="input-field ">
+                        <input id="apt_unit2" name="apt_unit2" type="text" class="validate">
+                        <label for="apt_unit2">Apt, unit or lot #</label>
+                    </div>
+                    <div class="input-field ">
+                        <input id="zipcode" name="zipcode" type="text" class="validate">
+                        <label for="zipcode">Zip Code</label>
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <div>
+                    <div id="step3_previous_btn" style="width: 150px;" class="btn grey darken-3 left">Previous</div>
+                    <div id="submit" style="width: 150px;" class="btn grey darken-3 right">Submit</div>
+                </div>
+                <br><br><br><br><br><br>
+
+            </div>
+
+
+
+
+
+
+        </form>
+
+
+
+
+
+
+    </div>
+</div>
+
+
+{% endblock 'mainbody' %}
+<script></script>
+{% block 'js' %}
+<script>
+    $("#month").keypress(function (e) {
+        
+        var key = window.event ? event.keyCode : event.which;
+        if (event.keyCode === 8 || event.keyCode === 46) {
+            return true;
+        } else if ( key < 48 || key > 57 ) {
+            return false;
+        } else {
+            return true;
+        }
+        
+    });
+    $("#day").keypress(function (e) {
+        
+        var key = window.event ? event.keyCode : event.which;
+        if (event.keyCode === 8 || event.keyCode === 46) {
+            return true;
+        } else if ( key < 48 || key > 57 ) {
+            return false;
+        } else {
+            return true;
+        }
+        
+    });
+    $("#year").keypress(function (e) {
+        
+        var key = window.event ? event.keyCode : event.which;
+        if (event.keyCode === 8 || event.keyCode === 46) {
+            return true;
+        } else if ( key < 48 || key > 57 ) {
+            return false;
+        } else {
+            return true;
+        }   
+    });
+    $("#last_four_social").keypress(function (e) {
+        
+        var key = window.event ? event.keyCode : event.which;
+        if (event.keyCode === 8 || event.keyCode === 46) {
+            return true;
+        } else if ( key < 48 || key > 57 ) {
+            return false;
+        } else {
+            return true;
+        }  
+    });
+    
+
+    $('input#toggleaddress').change(function () {
+        $('div#toggleaddressdiv').toggle();
+    })
+
+
+    $('div.program').click(function () {
+        $('div.program').removeClass('lighten-1')
+        $('div.program').addClass('darken-3')
+        $(this).removeClass('darken-3')
+        $(this).addClass('lighten-1')
+        $('input#program_value').val(this.innerHTML)
+        //$('div#step1_next_btn').click()
+    })
+
+    $('div#step1_next_btn').click(function () {
+        var program_value = $('input#program_value').val()
+        if (program_value == '') {
+            alert("Please select any Program")
+        } else {
+            $('div#step1').hide()
+            $('div#step2').show()
+        }
+    })
+
+    $('div#step2_previous_btn').click(function () {
+        $('div#step2').hide();
+        $('div#step1').show();
+    })
+
+    $('div#step2_next_btn').click(function () {
+        var first_name = $('input#first_name').val()
+        var middle_name = $('input#middle_name').val()
+        var last_name = $('input#last_name').val()
+        var second_last_name = $('input#second_last_name').val()
+        var suffix = $("#suffix option:selected").text()
+        var last_four_social = $('input#last_four_social').val()
+        var date = $('input#date').val()
+
+        
+        if (first_name != '' && middle_name != '' && last_name != '' && second_last_name != '' && suffix != '' && last_four_social != '' && date != '' ) {
+            if(last_four_social.length>4 || last_four_social.length<4){
+                alert("Last four of Social can be only 4 character long.")
+            }else{
+                $('div#step3').show();
+                $('div#step2').hide();
+            }
+            
+        } else {
+            alert("Please fill all the required fields.")
+        }
+
+    })
+
+    $('div#submit').click(function () {
+        var residence_address = $('input#residence_address').val()
+        var shipping_address = $('input#shipping_address').val()
+        var zipcode = $('input#zipcode').val()
+        var apt_unit1 = $('input#apt_unit1').val()
+        var apt_unit2 = $('input#apt_unit2').val()
+        var toggleaddress = $('#toggleaddress').prop('checked')
+        var address_nature = $("#address_nature option:selected").text()
+        if (toggleaddress == true) {
+            if (apt_unit2 != '' && shipping_address != '' && zipcode != '') {
+                $('#form').submit();
+            } else {
+                alert("Please fill all the required fields.")
+                this.preventDefault()
+            }
+        } else {
+            if (apt_unit1 != '' && residence_address != '') {
+                $('#form').submit();
+
+            } else {
+                alert("Please fill all the required fields.")
+                this.preventDefault()
+            }
+
+        }
+
+
+
+    })
+
+    $('div#step3_previous_btn').click(function () {
+        $('div#step3').hide();
+        $('div#step2').show();
+    })
+
+
+
+
+</script>
+{% endblock 'js' %}
