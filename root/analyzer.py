@@ -340,7 +340,7 @@ def Disclosure(id):
     currentchat = currentchats.first()
     currentchat.init_message="iehBool"
     currentchat.save()
-    return [f'http://localhost:8000/start/{id}','url']
+    return [f'http://3.84.239.72:8000/start/{id}','url']
 
 def iehBool(id):
     currentchats = ChatTracker.objects.filter(chatid=id)      

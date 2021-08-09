@@ -2,33 +2,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <base href="/">
   <link rel="stylesheet" href="https://unpkg.com/materialize-stepper@3.1.0/dist/css/mstepper.min.css">
   <script src="https://unpkg.com/materialize-stepper@3.1.0/dist/js/mstepper.min.js"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/cowsay@1.4.0/build/cowsay.umd.min.js"></script>
-<link rel="stylesheet" href="{{ STATIC_URL }}/Static/css/materialize.css">  
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">  -->
-    <script src="{{ STATIC_URL }}/Static/javascript/materialize.js"></script> 
-    <script src="{{ STATIC_URL }}/Static/javascript/jquery.js"></script>
-{% if page_title %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  {% if page_title %}
   <title>{{page_title}}</title>  
-{% else %}
+  {% else %}
   <title>CSGM Form</title>
   {% endif %}
   
-
-<link rel="shortcut icon" href="{{ STATIC_URL }}/Static/images/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="../Static/images/favicon.png" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400;1,600&display=swap" rel="stylesheet">
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
   
-
-
-  <style>
-
- 
-
-
-     /* label focus color */
+<style>
+/* label focus color */
    .input-field input[type=text]:focus + label {
     color: #424242 !important; 
 }
@@ -111,19 +104,8 @@ input.toggleaddress:checked + label:before {
     margin-left: 0;
     margin-right: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
     
-    </style>
+</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
 </head>
 <body id="body">      
@@ -134,20 +116,15 @@ input.toggleaddress:checked + label:before {
  
 {% endblock 'mainbody' %}
           
-          
+<!-- Dropdown Trigger -->
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <!-- Dropdown Trigger -->
- 
-           
-<script src="{{ STATIC_URL }}/Static/javascript/jquery.js"></script>  
-<script src="{{ STATIC_URL }}/Static/javascript/responsive.js"></script>   
 {% block 'js' %}
 {% endblock 'js' %}
 <script>
  
- 
-
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems, {
       FormSelect:true
@@ -162,10 +139,10 @@ input.toggleaddress:checked + label:before {
   });
 
   document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.datepicker');
-    var instances = M.Datepicker.init(elems, {
-      Datepicker:true
-    });
+   // var elems = document.querySelectorAll('.datepicker');
+   // var instances = M.Datepicker.init(elems, {
+   //   Datepicker:true
+   // });
   }); 
 
 </script>

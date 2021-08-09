@@ -74,7 +74,7 @@ def generateReply(chatid,incoming_message):
                                 currentchat.save()
 
 
-                                return [f'http://localhost:8000/submit_info/{chatid}','url']
+                                return [f'http://3.84.239.72:8000/submit_info/{chatid}','url']
                         
                 currentchat.flowchart3_stucked_status=True
                 currentchat.save()

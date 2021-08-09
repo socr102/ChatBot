@@ -1,9 +1,6 @@
 {% extends 'base.html' %}v
 {% block 'mainbody' %}
 
-
-
-
 <br><br><br>
 <div class="container">
     <div class="container">
@@ -196,142 +193,143 @@
 <script></script>
 {% block 'js' %}
 <script>
-    $("#month").keypress(function (e) {
-        
-        var key = window.event ? event.keyCode : event.which;
-        if (event.keyCode === 8 || event.keyCode === 46) {
-            return true;
-        } else if ( key < 48 || key > 57 ) {
-            return false;
-        } else {
-            return true;
-        }
-        
-    });
-    $("#day").keypress(function (e) {
-        
-        var key = window.event ? event.keyCode : event.which;
-        if (event.keyCode === 8 || event.keyCode === 46) {
-            return true;
-        } else if ( key < 48 || key > 57 ) {
-            return false;
-        } else {
-            return true;
-        }
-        
-    });
-    $("#year").keypress(function (e) {
-        
-        var key = window.event ? event.keyCode : event.which;
-        if (event.keyCode === 8 || event.keyCode === 46) {
-            return true;
-        } else if ( key < 48 || key > 57 ) {
-            return false;
-        } else {
-            return true;
-        }   
-    });
-    $("#last_four_social").keypress(function (e) {
-        
-        var key = window.event ? event.keyCode : event.which;
-        if (event.keyCode === 8 || event.keyCode === 46) {
-            return true;
-        } else if ( key < 48 || key > 57 ) {
-            return false;
-        } else {
-            return true;
-        }  
-    });
-    
-
-    $('input#toggleaddress').change(function () {
-        $('div#toggleaddressdiv').toggle();
-    })
-
-
-    $('div.program').click(function () {
-        $('div.program').removeClass('lighten-1')
-        $('div.program').addClass('darken-3')
-        $(this).removeClass('darken-3')
-        $(this).addClass('lighten-1')
-        $('input#program_value').val(this.innerHTML)
-        //$('div#step1_next_btn').click()
-    })
-
-    $('div#step1_next_btn').click(function () {
-        var program_value = $('input#program_value').val()
-        if (program_value == '') {
-            alert("Please select any Program")
-        } else {
-            $('div#step1').hide()
-            $('div#step2').show()
-        }
-    })
-
-    $('div#step2_previous_btn').click(function () {
-        $('div#step2').hide();
-        $('div#step1').show();
-    })
-
-    $('div#step2_next_btn').click(function () {
-        var first_name = $('input#first_name').val()
-        var middle_name = $('input#middle_name').val()
-        var last_name = $('input#last_name').val()
-        var second_last_name = $('input#second_last_name').val()
-        var suffix = $("#suffix option:selected").text()
-        var last_four_social = $('input#last_four_social').val()
-        var date = $('input#date').val()
-
-        
-        if (first_name != '' && middle_name != '' && last_name != '' && second_last_name != '' && suffix != '' && last_four_social != '' && date != '' ) {
-            if(last_four_social.length>4 || last_four_social.length<4){
-                alert("Last four of Social can be only 4 character long.")
-            }else{
-                $('div#step3').show();
-                $('div#step2').hide();
+    $(document).ready(function(){
+        $("#month").keypress(function (e) {
+            
+            var key = window.event ? event.keyCode : event.which;
+            if (event.keyCode === 8 || event.keyCode === 46) {
+                return true;
+            } else if ( key < 48 || key > 57 ) {
+                return false;
+            } else {
+                return true;
             }
             
-        } else {
-            alert("Please fill all the required fields.")
-        }
+        });
+        $("#day").keypress(function (e) {
+            
+            var key = window.event ? event.keyCode : event.which;
+            if (event.keyCode === 8 || event.keyCode === 46) {
+                return true;
+            } else if ( key < 48 || key > 57 ) {
+                return false;
+            } else {
+                return true;
+            }
+            
+        });
+        $("#year").keypress(function (e) {
+            
+            var key = window.event ? event.keyCode : event.which;
+            if (event.keyCode === 8 || event.keyCode === 46) {
+                return true;
+            } else if ( key < 48 || key > 57 ) {
+                return false;
+            } else {
+                return true;
+            }   
+        });
+        $("#last_four_social").keypress(function (e) {
+            
+            var key = window.event ? event.keyCode : event.which;
+            if (event.keyCode === 8 || event.keyCode === 46) {
+                return true;
+            } else if ( key < 48 || key > 57 ) {
+                return false;
+            } else {
+                return true;
+            }  
+        });
+        
 
-    })
+        $('input#toggleaddress').change(function () {
+            $('div#toggleaddressdiv').toggle();
+        })
 
-    $('div#submit').click(function () {
-        var residence_address = $('input#residence_address').val()
-        var shipping_address = $('input#shipping_address').val()
-        var zipcode = $('input#zipcode').val()
-        var apt_unit1 = $('input#apt_unit1').val()
-        var apt_unit2 = $('input#apt_unit2').val()
-        var toggleaddress = $('#toggleaddress').prop('checked')
-        var address_nature = $("#address_nature option:selected").text()
-        if (toggleaddress == true) {
-            if (apt_unit2 != '' && shipping_address != '' && zipcode != '') {
-                $('#form').submit();
+
+        $('div.program').click(function () {
+            $('div.program').removeClass('lighten-1')
+            $('div.program').addClass('darken-3')
+            $(this).removeClass('darken-3')
+            $(this).addClass('lighten-1')
+            $('input#program_value').val(this.innerHTML)
+            //$('div#step1_next_btn').click()
+        })
+
+        $('div#step1_next_btn').click(function () {
+            var program_value = $('input#program_value').val()
+            if (program_value == '') {
+                alert("Please select any Program")
+            } else {
+                $('div#step1').hide()
+                $('div#step2').show()
+            }
+        })
+
+        $('div#step2_previous_btn').click(function () {
+            $('div#step2').hide();
+            $('div#step1').show();
+        })
+
+        $('div#step2_next_btn').click(function () {
+            var first_name = $('input#first_name').val()
+            var middle_name = $('input#middle_name').val()
+            var last_name = $('input#last_name').val()
+            var second_last_name = $('input#second_last_name').val()
+            var suffix = $("#suffix option:selected").text()
+            var last_four_social = $('input#last_four_social').val()
+            var date = $('input#date').val()
+
+            
+            if (first_name != '' && middle_name != '' && last_name != '' && second_last_name != '' && suffix != '' && last_four_social != '' && date != '' ) {
+                if(last_four_social.length>4 || last_four_social.length<4){
+                    alert("Last four of Social can be only 4 character long.")
+                }else{
+                    $('div#step3').show();
+                    $('div#step2').hide();
+                }
+                
             } else {
                 alert("Please fill all the required fields.")
-                this.preventDefault()
             }
-        } else {
-            if (apt_unit1 != '' && residence_address != '') {
-                $('#form').submit();
 
+        })
+
+        $('div#submit').click(function () {
+            var residence_address = $('input#residence_address').val()
+            var shipping_address = $('input#shipping_address').val()
+            var zipcode = $('input#zipcode').val()
+            var apt_unit1 = $('input#apt_unit1').val()
+            var apt_unit2 = $('input#apt_unit2').val()
+            var toggleaddress = $('#toggleaddress').prop('checked')
+            var address_nature = $("#address_nature option:selected").text()
+            if (toggleaddress == true) {
+                if (apt_unit2 != '' && shipping_address != '' && zipcode != '') {
+                    $('#form').submit();
+                } else {
+                    alert("Please fill all the required fields.")
+                    this.preventDefault()
+                }
             } else {
-                alert("Please fill all the required fields.")
-                this.preventDefault()
+                if (apt_unit1 != '' && residence_address != '') {
+                    $('#form').submit();
+
+                } else {
+                    alert("Please fill all the required fields.")
+                    this.preventDefault()
+                }
+
             }
 
-        }
 
 
+        })
 
-    })
-
-    $('div#step3_previous_btn').click(function () {
-        $('div#step3').hide();
-        $('div#step2').show();
-    })
-
+        $('div#step3_previous_btn').click(function () {
+            $('div#step3').hide();
+            $('div#step2').show();
+        })
+     });
 
 
 
