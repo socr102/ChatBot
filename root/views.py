@@ -19,7 +19,7 @@ def index(request):
         return JsonResponse({"message": reply})
 
 @csrf_exempt
-def get_info(request,id,token,PackageId,ResidneceState,TribalResident,EligibiltyPrograms):
+def get_info(request,id,token,PackageId,ResidenceState,TribalResident,EligibiltyPrograms):
     if request.method=='GET':
         item = ChatTracker.objects.get(chatid=id)
         #save the token, packageid, residencestate,trivalresident,eligibiltyprograms into the id
