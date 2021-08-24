@@ -28,6 +28,7 @@ def get_info(request,id,token,PackageId,ResidneceState,TribalResident,Eligibilty
         item.ResidenceState = ResidenceState
         item.TribalResident = TribalResident
         item.EligibiltyPrograms = EligibiltyPrograms
+        item.save()
 
         data = {
             "program" : item.program,
