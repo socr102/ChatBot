@@ -20,6 +20,10 @@ def index(request):
 
 @csrf_exempt
 def get_info(request,id,token,PackageId,ResidenceState,TribalResident,EligibiltyPrograms):
+<<<<<<< HEAD
+=======
+    if request.method=='GET':
+>>>>>>> 4464d7a403a30988e40aa3c737034cece95245ba
         item = ChatTracker.objects.get(chatid=id)
         #save the token, packageid, residencestate,trivalresident,eligibiltyprograms into the id
         item.token = token
