@@ -18,13 +18,49 @@ def index(request):
         reply = generateReply(chatid, message)
         return JsonResponse({"message": reply})
 
+@csrf_exempt
+def get_info(request,id,token,PackageId,ResidneceState,TribalResident,EligibiltyPrograms):
+    if request.method=='GET':
+        item = ChatTracker.objects.get(chatid=id)
+        #save the token, packageid, residencestate,trivalresident,eligibiltyprograms into the id
+        item.token = token
+        item.PackageId = PackageId,
+        item.ResidenceState = ResidenceState
+        item.TribalResident = TribalResident
+        item.EligibiltyPrograms = EligibiltyPrograms
+
+        data = {
+            "program" : item.program,
+            "first_name" : item.first_name,
+            "middle_name" : item.middle_name,
+            "last_name" : item.last_name,
+            "second_last_name" : item.second_last_name,
+            "suffix" : item.suffix,
+            "date" : item.date,
+            "last_four_social" : item.last_four_social,
+            "residential_address" : item.residential_address,
+            "shipping_address" : item.shipping_address,
+            "apt_unit1" : item.apt_unit1,
+            "apt_unit2" : item.apt_unit2,
+            "address_nature": item.address_nature
+        }
+        return JsonResponse({"message": data})
+
+@csrf_exempt
+def get_ieh(request,id):
+    if request.method=='GET':
+        item = ChatTracker.objects.get(chatid = id)
+
+        return JsonResponse({"ieh":item.iehBool})
 
 @csrf_exempt
 def submit_info(request, id):
-    items = ChatTracker.objects.filter(chatid=id)
-    if len(items) == 0:
-        return HttpResponse("<h1>Invalid User ID</h1>")
-    else:
+        items = ChatTracker.objects.filter(chatid=id)
+        if len(items) == 0:
+            ChatTracker(chatid=id).save()
+
+        #return HttpResponse("<h1>Invalid User ID</h1>")
+    
         item = items.first()
         if request.method == 'GET':
             if item.form_filled:
@@ -70,7 +106,6 @@ def submit_info(request, id):
 
             item.form_filled = True
             item.save()
-            print('==>>  Form Filled')
 
 
             return HttpResponse("<h1>Submitted :) </h1>")
@@ -131,8 +166,7 @@ def disclosure(request, user_id):
 
     user.sequence_count = sequence_count
     #user.ieh = str(response_json['CaptureIehForm']).lower()  # Update User fields
-    user.ieh = str(response_json['CaptureIehForm'])  # Update User fields
-    print(user.ieh)
+    user.iehBool = str(response_json['CaptureIehForm'])  # Update User fields
     user.save()
 
     context = {
