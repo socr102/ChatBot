@@ -20,11 +20,14 @@ def index(request):
 
 @csrf_exempt
 def get_info(request,id,token,PackageId,ResidenceState,TribalResident,EligibiltyPrograms):
+<<<<<<< HEAD
+=======
     if request.method=='GET':
+>>>>>>> 4464d7a403a30988e40aa3c737034cece95245ba
         item = ChatTracker.objects.get(chatid=id)
         #save the token, packageid, residencestate,trivalresident,eligibiltyprograms into the id
         item.token = token
-        item.PackageId = PackageId,
+        item.PackageId = PackageId
         item.ResidenceState = ResidenceState
         item.TribalResident = TribalResident
         item.EligibiltyPrograms = EligibiltyPrograms
@@ -136,11 +139,11 @@ def submit_form(request):
         return render(request, "root/thanks.html")
 @csrf_exempt
 @xframe_options_exempt
-def disclosure(request, user_id):
+def disclosure(request,user_id):
     """
     Render the disclosures HTML page
     """
-    user = ChatTracker.objects.get(chatid=user_id)  # Get user by ID
+    user = ChatTracker.objects.get(chatid = user_id)  # Get user by ID
 
     payload = {  # Form request data
         'Token': user.token,
